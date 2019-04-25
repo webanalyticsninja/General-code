@@ -30,3 +30,11 @@ function getCookie(cname) {
     return "";
 } 
     
+
+
+//additional logic to be used on basket page. 
+
+if (b["t_customer_id"].length > 0) { 
+b.user_status = "logged in";
+b.tealium_event = "user_login_succes";
+ }
