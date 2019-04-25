@@ -1,15 +1,16 @@
 //if a user clicks the "login" button in the shopping cart, we will drop a cookie when a user clicks on the "login and checkout" button. Once the cookie is dropped, we will wait for the login to happen, and once that happens, we will trigger "login event" for Adobe Analytics and remove the cookie. Everything will happen within the same code. 
+var date = new Date();
+date.setTime(date.getTime() + (120 * 1000));
 
 var url = window.document.URL; 
 var pathName = window.location.pathname;
-if (getCookie("loginIntent")) {
-    
-} else {
+
  if ((url.indexOf("/bag") > -1 ) && (utag.data.product_id.length > -1)){
     $('.js-oneidsignin-cart').click(function() {
-        document.cookie = "loginIntent=basketClickLogin;path="+pathName+"";
+        if (!getCookie("loginIntent")) {
+            document.cookie = "loginIntent=basketClickLogin"+"; expires="+date+"+;path="+pathName+"";
+        } else {}
     });
-}
 }
 
 //check for cookie
@@ -28,4 +29,4 @@ function getCookie(cname) {
     }
     return "";
 } 
-getCookie("loginIntent")
+    
