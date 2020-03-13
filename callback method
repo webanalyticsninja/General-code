@@ -1,0 +1,13 @@
+	var poll = function () {
+		var u = window.universal_variable;
+		if (u && u.transaction && window._qubitComplete) {
+			if (typeof window.s_pageName !== 'undefined' && window.s_pageName ==
+				"BT.com|Con|Checkout|Your order is complete") {
+        _satellite.track("fireIovation");
+        
+			}
+		} else {
+			setTimeout(poll, 100);
+		}
+	};
+	poll();
